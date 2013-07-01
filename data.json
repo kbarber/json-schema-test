@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "rules": {
+    "node": [{"anonymize": true}],
+    "type": [
+      {"context": {
+         "type": ["Augeas", "Computer", "Cron"]
+       },
+       "anonymize": true},
+  
+      {"context": {
+         "type": ["/^Nagios_(a-z)+$/"]
+       },
+       "anonymize": "foo"},
+
+      {"context": { "type": ["foo"] }, "anonymize": true}
+    ]
+  }
+}

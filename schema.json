@@ -1,0 +1,50 @@
+{
+  "title": "Anonymization Config",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type":"integer"
+    },
+    "rules": {
+      "type":"object",
+      "properties": {
+        "node": { "$ref": "#/definitions/ruleset" },
+        "type": { "$ref": "#/definitions/ruleset" },
+        "title": { "$ref": "#/definitions/ruleset" },
+        "parameter-name": { "$ref": "#/definitions/ruleset" },
+        "parameter-value": { "$ref": "#/definitions/ruleset" },
+        "message": { "$ref": "#/definitions/ruleset" },
+        "file": { "$ref": "#/definitions/ruleset" },
+        "line": { "$ref": "#/definitions/ruleset" }
+      }
+    }
+  },
+  "required":["version"],
+  "definitions": {
+    "context": {
+      "type": "object",
+      "properties": {
+        "node": {"type": "array", "items": { "type": "string" } },
+        "type": {"type": "array", "items": { "type": "string" } },
+        "title": {"type": "array", "items": { "type": "string" } },
+        "parameter-name": {"type": "array", "items": { "type": "string" } },
+        "parameter-value": {"type": "array", "items": { "type": "string" } },
+        "message": {"type": "array", "items": { "type": "string" } },
+        "file": {"type": "array", "items": { "type": "string" } },
+        "line": {"type": "array", "items": { "type": "string" } }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "properties": {
+        "context": { "$ref": "#/definitions/context" },
+        "anonymize": { "type": "boolean" }
+      },
+      "required": ["anonymize"]
+    },
+    "ruleset": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/rule" }
+    }
+  }
+}
